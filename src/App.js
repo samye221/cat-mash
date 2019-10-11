@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import store from './store';
+import { loadCats } from './actions'
+import api from './api';
+import CatList from './catList'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component { 
+  syncData = async () => {
+    const cats = await api.getCats()
+    store.dispatch(loadCats(cats))
+  }
+
+
+  componentDidMount() {
+    this.unsubscribe = store.subscribe(() => this.forceUpdate())
+    this.syncData()
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe()
+  }
+
+  render() {
+    return (
+      <CatList/>
+    )
+  }
+
 }
 
 export default App;
