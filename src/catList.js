@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 const mapStateToProps = state => {
-    return { cats: state.listView.catList.images || [] };
+    return { cats: state.listView.catsWithVotes };
 };
 const ConnectedList = ({ cats }) => (
     <div>
