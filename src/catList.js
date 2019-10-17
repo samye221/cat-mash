@@ -1,18 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
+import {List, ListItem, ListItemAvatar, ListItemText, Avatar} from '@material-ui/core';
+
 const mapStateToProps = state => {
-    return { cats: state.listView.catsWithVotes };
+    const cats = state.listView.catList;
+    cats.sort((a, b) => b.count - a.count)
+    return { cats};
 };
 const ConnectedList = ({ cats }) => (
-    <div>
+    <List>
         {cats.map(el => (
-            <img
-                key={el.id}
-                src = {el.url} 
-                alt = ''/>
+            <ListItem key={el.id}>
+                <ListItemAvatar>
+                    <Avatar src={el.url} alt='cat picture'></Avatar>
+                </ListItemAvatar>
+                <ListItemText>SCORE: {el.count}</ListItemText>
+            </ListItem>
+            // <img
+            //     key={el.id}
+            //     src = {el.url} 
+            //     alt = ''/>
         ))}
-    </div>
+    </List>
 );
-const List = connect(mapStateToProps)(ConnectedList);
+const CatList = connect(mapStateToProps)(ConnectedList);
 
-export default List
+export default CatList
