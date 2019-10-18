@@ -27,8 +27,13 @@ class ConnectedDuel extends React.Component {
         const { duelCats, winner, loser } = this.props;
         const { voted } = this.state;
 
+        const getSecondCat = (cat1) => {
+            const randomCat2 = duelCats[Math.floor(Math.random() * duelCats.length)];
+            return randomCat2 === cat1 ? duelCats[Math.floor(Math.random() * duelCats.length)] : randomCat2;
+        }
+
         const cat1 = !voted ? duelCats[Math.floor(Math.random() * duelCats.length)] : winner;
-        const cat2 = !voted ? duelCats[Math.floor(Math.random() * duelCats.length)] : loser;
+        const cat2 = !voted ? getSecondCat(cat1) : loser;
 
         return (
             <div style={{ width: '100%' }}>
