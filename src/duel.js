@@ -28,11 +28,11 @@ class ConnectedDuel extends React.Component {
     }
 
     getRandomCats() {
-        const { duelCats, winner, loser, initialCat1, initialCat2 } = this.props;
+        const { duelCats, winner, loser } = this.props;
         const { voted } = this.state;
 
-        const cat1 = !voted == winner ? initialCat1 : winner;
-        const cat2 = !voted ? initialCat2 : loser;
+        const cat1 = !voted ? duelCats[Math.floor(Math.random() * duelCats.length)] : winner;
+        const cat2 = !voted ? duelCats[Math.floor(Math.random() * duelCats.length)] : loser;
 
         return (
             <div style={{ display: 'flex', flexDirection: 'row', margin: 4, justifyContent: 'center' }}>
@@ -54,17 +54,14 @@ class ConnectedDuel extends React.Component {
     }
 }
 
-
 const mapStateToProps = state => {
     const cats = state.listView.catList || [];
     const catScores = state.listView.catsWithVotes || [];
     const duelCats = cats;
-    const initialCat1 = duelCats[Math.floor(Math.random() * duelCats.length)];
-    const initialCat2 = duelCats[Math.floor(Math.random() * duelCats.length)];
     const winner = state.duelView.winner;
     const loser = state.duelView.loser;
     return {
-        duelCats, winner, loser, catScores, initialCat1, initialCat2
+        duelCats, winner, loser, catScores
     };
 }
 
