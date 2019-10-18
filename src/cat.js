@@ -7,7 +7,7 @@ export const Cat = ({cat, onClick}) => {
     return (
         <Card style={{height:'40vh', width: '40vw', margin: 20}} onClick={onClick}>
             <CardMedia
-                style={{paddingTop: '56.25%'}}
+                style={{height: '80%',backgroundSize: 'cover'}}
                 image={url}
                 title="Cat picture"
             />
