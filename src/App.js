@@ -7,7 +7,7 @@ import CatList from './catList';
 import Duel from './duel';
 // import { Router } from '@reach/router';
 
-class wApp extends React.Component {
+class App extends React.Component {
   syncData = async () => {
     const cats = await api.getCats()
     store.dispatch(loadCats(cats))
