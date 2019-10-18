@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import store from './store';
 import { addScores, addPoint } from './actions';
 import { Cat } from './cat';
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 import { Button } from '@material-ui/core';
 
 class ConnectedDuel extends React.Component {

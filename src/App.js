@@ -5,7 +5,7 @@ import { loadCats } from './actions';
 import api from './api';
 import CatList from './catList';
 import Duel from './duel';
-import { Router } from '@reach/router';
+import { HashRouter, Route } from 'react-router-dom';
 
 class App extends React.Component {
   syncData = async () => {
@@ -25,10 +25,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <Duel path='/' />
-        <CatList path='/list' />
-      </Router>
+      <HashRouter basename='/'>
+        <Route exact path="/" component={Duel}/>
+        <Route path="/list" component={CatList}/>
+      </HashRouter>
 
     )
   }
