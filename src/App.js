@@ -5,9 +5,9 @@ import { loadCats } from './actions';
 import api from './api';
 import CatList from './catList';
 import Duel from './duel';
-import { Router } from '@reach/router';
+// import { Router } from '@reach/router';
 
-class App extends React.Component {
+class wApp extends React.Component {
   syncData = async () => {
     const cats = await api.getCats()
     store.dispatch(loadCats(cats))
@@ -25,10 +25,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <Duel path='/' />
-        <CatList path='/list' />
-      </Router>
+      <div>
+        {/* <Router> */}
+          <Duel path='/' />
+          <CatList path='/list' />
+        {/* </Router> */}
+      </div>
+
 
     )
   }
