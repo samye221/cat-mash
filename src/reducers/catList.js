@@ -1,6 +1,5 @@
 const initialState = {
     catList: [],
-    catsWithVotes: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -13,27 +12,6 @@ const reducer = (state = initialState, action) => {
             catList: cats
         }
     }
-
-    // if (action.type === 'ADD_SCORES') {
-    //     const cats = action.payload.catList;
-    //     const votedCat = action.payload.cat;
-    //     const catsWithVotes = cats.map(c => {
-    //         const count = c.count ? c.count : 0
-    //         if (c.id === votedCat.id) {
-                
-    //             return Object.assign(c, {count: count + 1})
-    //         }
-    //         else { return Object.assign(c, {count: count}) }
-    //     })
-    //     return {
-    //         ...state,
-    //         catsWithVotes: catsWithVotes
-    //     }
-
-
-
-    // }
-
     return state
 }
 

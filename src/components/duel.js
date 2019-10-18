@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
-import store from './store';
-import { addScores, addPoint } from './actions';
+import store from '../store';
+import { addScores, addPoint } from '../actions';
 import { Cat } from './cat';
 import { Link } from "react-router-dom";
-import { Button } from '@material-ui/core';
+import { Grid, Button, Typography } from '@material-ui/core';
 
 class ConnectedDuel extends React.Component {
 
@@ -12,12 +12,10 @@ class ConnectedDuel extends React.Component {
         super(props)
 
         this.addPoint = this.addPoint.bind(this);
-
         this.state = {
             voted: false,
         }
     }
-
 
     addPoint(el) {
         const { duelCats } = this.props;
@@ -33,29 +31,32 @@ class ConnectedDuel extends React.Component {
         const cat2 = !voted ? duelCats[Math.floor(Math.random() * duelCats.length)] : loser;
 
         return (
-            <div style={{ display: 'flex', flexDirection: 'row', margin: 4, justifyContent: 'center' }}>
-                <Cat cat={cat1} onClick={() => this.addPoint(cat1)} />
-                <Cat cat={cat2} onClick={() => this.addPoint(cat2)} />
+            <div style={{ width: '100%' }}>
+                <Typography variant='h2' align='center' color='primary' style={{ margin: 10 }}> CAT MASH</Typography>
+                <Typography variant='h4' align='center'  color='primary' style={{ margin: 10, fontStyle:'italic' }}>Vote for the cutest cat !!!</Typography>
+
+                <Grid container justify="space-around" alignItems="center">
+                    <Cat cat={cat1} onClick={() => this.addPoint(cat1)} />
+                    <Cat cat={cat2} onClick={() => this.addPoint(cat2)} />
+                </Grid>
             </div>
+
         )
     }
 
     render() {
         return (
-            <div style={{ margin: 8 }}>
+            <Grid container justify="space-around" alignItems="center" >
                 {this.props.duelCats.length > 0 ? this.getRandomCats() : undefined}
-                <button><Link to='/list'>TO LIST</Link></button>
-            </div>
-
+                <Link to='/list' style={{ textDecoration: 'none' }}><Button style={{ width: '90vw' }} variant="outlined" size="large" color="primary">GO TO SCORES</Button></Link>
+            </Grid>
         )
-
     }
 }
 
 const mapStateToProps = state => {
-    const cats = state.listView.catList;
     const catScores = state.listView.catsWithVotes;
-    const duelCats = cats;
+    const duelCats = state.listView.catList;
     const winner = state.duelView.winner;
     const loser = state.duelView.loser;
     return {

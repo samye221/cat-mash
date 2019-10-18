@@ -3,8 +3,8 @@ import './App.css';
 import store from './store';
 import { loadCats } from './actions';
 import api from './api';
-import CatList from './catList';
-import Duel from './duel';
+import CatList from './components/catList';
+import Duel from './components/duel';
 import { HashRouter, Route } from 'react-router-dom';
 
 class App extends React.Component {
