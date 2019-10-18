@@ -17,4 +17,4 @@ render(
 
 
 
-// serviceWorker.unregister();
+serviceWorker.unregister();
