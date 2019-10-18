@@ -15,8 +15,6 @@ class ConnectedDuel extends React.Component {
 
         this.state = {
             voted: false,
-            cat1: {},
-            cat2: {},
         }
     }
 
@@ -55,8 +53,8 @@ class ConnectedDuel extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const cats = state.listView.catList || [];
-    const catScores = state.listView.catsWithVotes || [];
+    const cats = state.listView.catList;
+    const catScores = state.listView.catsWithVotes;
     const duelCats = cats;
     const winner = state.duelView.winner;
     const loser = state.duelView.loser;
@@ -65,12 +63,7 @@ const mapStateToProps = state => {
     };
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        addScores: (cat, catList) => dispatch(addScores(cat, catList))
-    }
-}
-const Duel = connect(mapStateToProps, mapDispatchToProps)(ConnectedDuel)
+const Duel = connect(mapStateToProps)(ConnectedDuel)
 
 
 export default Duel;

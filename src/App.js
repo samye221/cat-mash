@@ -5,7 +5,7 @@ import { loadCats } from './actions';
 import api from './api';
 import CatList from './catList';
 import Duel from './duel';
-// import { Router } from '@reach/router';
+import { Router } from '@reach/router';
 
 class App extends React.Component {
   syncData = async () => {
@@ -19,19 +19,16 @@ class App extends React.Component {
     this.syncData()
   }
 
-  // componentWillUnmount() {
-  //   this.unsubscribe()
-  // }
+  componentWillUnmount() {
+    this.unsubscribe()
+  }
 
   render() {
     return (
-      <div>
-        {/* <Router> */}
-          <Duel path='/' />
-          <CatList path='/list' />
-        {/* </Router> */}
-      </div>
-
+      <Router>
+        <Duel path='/' />
+        <CatList path='/list' />
+      </Router>
 
     )
   }
