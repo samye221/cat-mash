@@ -18,7 +18,7 @@ export const Cat = ({ cat, onClick }) => {
     const classes = useStyles();
     return (
         <Grid style={{ margin: 30 }} direction='column' justify='center' >
-            <div className={classes.hover} style={{ height: 400, width: 400, backgroundImage: `url(${url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} onClick={onClick}>
+            <div className={classes.hover} style={{ height: 400, width: 400, backgroundImage: `url(${url})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} onClick={onClick}>
 
             </div >
             <Typography variant='body1' color='primary' align='center' style={{ margin: 10 }}>
